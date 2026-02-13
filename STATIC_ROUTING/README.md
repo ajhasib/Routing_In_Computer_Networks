@@ -1,3 +1,5 @@
+![Project Banner](./STATIC_ROUTING.PNG)
+
 # Enterprise High-Availability Network 🌐
 
 ### Project Overview
@@ -37,27 +39,3 @@ To achieve deterministic failover, the following Administrative Distance (AD) va
 ```bash
 ip route 192.168.2.0 255.255.255.0 10.1.1.2     ! Primary
 ip route 192.168.2.0 255.255.255.0 10.1.1.6 100 ! Backup
-
-### ✅ Verification Results
-
-**1. Normal Operation (Primary Path)**
-Verified that the router prefers the Primary Route (`10.1.1.2`) with the default AD of 1.
-![Normal Routing Table](./IP_ROUTE_WITHOUT_AD.jpg)
-
-**2. Simulated Failure Event**
-Manually triggered a `shutdown` on the primary WAN interface. The console logs confirm the state change to DOWN.
-![Interface Failure Logs](./STATIC_ROUTE_WITHOUT_AD.png)
-
-**3. Failover Convergence (Backup Path)**
-The router automatically installed the **Floating Static Route** (`10.1.1.6`) with AD 100, restoring connectivity via the redundant link.
-![Failover Routing Table](./IP_ROUTE_WITH_AD.png)
-
-**4. Connectivity Verification**
-`Traceroute` confirms that traffic successfully traverses the alternate physical path during the outage.
-![Traceroute Verification](./STATIC_ROUTE_WITH_AD.png)
-
----
-
-### 📂 Project Files
-
-* **[Download Packet Tracer File (.pkt)](./STATIC_ROUTING.pkt)**
