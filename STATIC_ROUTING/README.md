@@ -1,5 +1,3 @@
-![Project Banner](./STATIC_ROUTING.png)
-
 # Enterprise High-Availability Network 🌐
 
 ### Project Overview
@@ -16,7 +14,7 @@ Designed and implemented a redundant enterprise network infrastructure using a *
 ### 🗺️ Network Topology
 The design connects three core sites (HQ, IT Branch, HR Branch) via dual-homed fiber links.
 
-![Network Topology Diagram](./STATIC_ROUTE_WITHOUT_AD.png)
+![Network Topology Diagram](./STATIC_ROUTING.png)
 
 ### 📝 Addressing & Routing Scheme
 | Site Node | Role | Loopback ID | LAN Subnet |
@@ -39,3 +37,28 @@ To achieve deterministic failover, the following Administrative Distance (AD) va
 ```bash
 ip route 192.168.2.0 255.255.255.0 10.1.1.2     ! Primary
 ip route 192.168.2.0 255.255.255.0 10.1.1.6 100 ! Backup
+```
+
+### ✅ Verification Results
+
+**1. Normal Operation (Primary Path)**
+Verified that the router prefers the Primary Route (`10.1.1.2`) with the default Administrative Distance (AD) of 1.
+![Normal Routing Table](./IP_ROUTE_WITHOUT_AD.jpg)
+
+**2. Simulated Failure Event**
+Manually triggered a `shutdown` on the primary WAN interface. The console logs confirm the state change to DOWN.
+![Interface Failure Logs](./STATIC_ROUTE_WITHOUT_AD.png)
+
+**3. Failover Convergence (Backup Path)**
+The router automatically installed the **Floating Static Route** (`10.1.1.6`) with AD 100, restoring connectivity via the redundant link.
+![Failover Routing Table](./IP_ROUTE_WITH_AD.png)
+
+**4. Static Route Verification**
+Executed `show ip route static` to isolate the routing entries. This confirms that the backup route is the **only** active static path in the Routing Information Base (RIB).
+![Static Route Command Output](./STATIC_ROUTE_WITH_AD.png)
+
+---
+
+### 📂 Project Files
+
+* **[Download Packet Tracer File (.pkt)](./STATIC_ROUTING.pkt)**
