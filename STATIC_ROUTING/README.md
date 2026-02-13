@@ -43,7 +43,7 @@ ip route 192.168.2.0 255.255.255.0 10.1.1.6 100 ! Backup
 
 **1. Normal Operation (Primary Path)**
 Verified that the router prefers the Primary Route (`10.1.1.2`) with the default Administrative Distance (AD) of 1.
-![Normal Routing Table](./IP_ROUTE_WITHOUT_AD.jpg)
+![Normal Routing Table](./IP_ROUTE_WITHOUT_AD.png)
 
 **2. Simulated Failure Event**
 Manually triggered a `shutdown` on the primary WAN interface. The console logs confirm the state change to DOWN.
