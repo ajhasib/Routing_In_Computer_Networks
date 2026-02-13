@@ -1,4 +1,4 @@
-![Project Banner](./STATIC_ROUTING.PNG)
+![Project Banner](./STATIC_ROUTING.png)
 
 # Enterprise High-Availability Network 🌐
 
