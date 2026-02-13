@@ -15,6 +15,7 @@ To master the implementation of Interior (IGP) and Exterior (EGP) routing protoc
 
 | Protocol | Type | Usage |
 | :--- | :--- | :--- |
+| **Static** | Manual | Small Networks, Stub Networks & Default Routes |
 | **RIPv2** | Distance Vector | Legacy & Small Networks |
 | **EIGRP** | Hybrid | Cisco Enterprise Networks |
 | **OSPF** | Link State | Industry Standard (Single & Multi-Area) |
